@@ -1,0 +1,50 @@
+{
+  "name": "@double-great/remark-lint-alt-text",
+  "version": "0.0.0",
+  "description": "A remark-lint plugin to warn against inaccessible alt text.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "pretest": "npm run lint",
+    "test": "tape tests/*.test.js",
+    "pretty-quick": "pretty-quick"
+  },
+  "author": "@double-great",
+  "license": "MIT",
+  "dependencies": {
+    "@double-great/alt-text": "^0.1.0",
+    "unified-lint-rule": "^1.0.4",
+    "unist-util-visit": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "dedent": "^0.7.0",
+    "eslint": "^6.8.0",
+    "husky": "^3.1.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "remark": "^11.0.2",
+    "tape": "^4.12.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [
+    "remark",
+    "remark-plugin",
+    "remark-lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/double-great/remark-lint-alt-text.git"
+  },
+  "bugs": {
+    "url": "https://github.com/double-great/remark-lint-alt-text/issues"
+  },
+  "homepage": "https://github.com/double-great/remark-lint-alt-text#readme"
+}
