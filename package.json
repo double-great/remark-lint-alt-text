@@ -1,6 +1,6 @@
 {
   "name": "@double-great/remark-lint-alt-text",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A remark-lint plugin to warn against inaccessible alt text.",
   "main": "index.js",
   "scripts": {
