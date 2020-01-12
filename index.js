@@ -1,7 +1,6 @@
 const rule = require("unified-lint-rule");
 const visit = require("unist-util-visit");
-var visitParents = require("unist-util-visit-parents");
-
+const visitParents = require("unist-util-visit-parents");
 const altText = require("@double-great/alt-text");
 
 function checkAltText(ast, file) {
