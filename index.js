@@ -40,7 +40,10 @@ function checkAltText(ast, file) {
         file.message(altText(node.alt), node);
       }
       if (imageIsLink && hasAltText) {
-        file.message("Alt text should describe the link, not the image.", node);
+        file.message(
+          "Images inside a link tag require alt text that describes the purpose of the link.",
+          node
+        );
       }
     });
   });

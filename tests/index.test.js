@@ -34,7 +34,7 @@ test("Image is a link", assert => {
     assert.equal(vFile.messages.length, 1);
     assert.equal(
       vFile.messages[0].reason,
-      "Alt text should describe the link, not the image."
+      "Images inside a link tag require alt text that describes the purpose of the link."
     );
     assert.end();
   });
