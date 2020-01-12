@@ -26,6 +26,20 @@ test("End in period", assert => {
   });
 });
 
+test("Image is a link", assert => {
+  const lint = processMarkdown(dedent`
+      [![Puppies.](https://site.com/image.png)](https://website.org)
+    `);
+  return lint.then(vFile => {
+    assert.equal(vFile.messages.length, 1);
+    assert.equal(
+      vFile.messages[0].reason,
+      "Alt text should describe the link, not the image."
+    );
+    assert.end();
+  });
+});
+
 test("No warnings", assert => {
   const lint = processMarkdown(dedent`
       # Title of my site
