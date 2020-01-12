@@ -7,9 +7,17 @@ const altText = require("@double-great/alt-text");
 function checkAltText(ast, file) {
   const textToNodes = {};
   let imageIsLink = false;
+  let hasAltText = false;
   const aggregate = node => {
     const alt = node.alt || undefined;
-    if (!alt) return;
+    if (alt) hasAltText = true;
+    if (!alt && !imageIsLink) return;
+    if (!alt && imageIsLink) {
+      file.message(
+        "An image link should have alt text to describe the link.",
+        node
+      );
+    }
     if (!textToNodes[alt]) {
       textToNodes[alt] = [];
     }
@@ -31,7 +39,7 @@ function checkAltText(ast, file) {
       if (node.alt && altText(node.alt)) {
         file.message(altText(node.alt), node);
       }
-      if (imageIsLink) {
+      if (imageIsLink && hasAltText) {
         file.message("Alt text should describe the link, not the image.", node);
       }
     });
