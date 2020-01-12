@@ -1,13 +1,14 @@
 const rule = require("unified-lint-rule");
-const visit = require("unist-util-visit");
-const visitParents = require("unist-util-visit-parents");
+const visit = require("unist-util-visit-parents");
 const altText = require("@double-great/alt-text");
 
 function checkAltText(ast, file) {
   const textToNodes = {};
   let imageIsLink = false;
   let hasAltText = false;
-  const aggregate = node => {
+
+  const aggregate = (node, ancestors) => {
+    imageIsLink = ancestors.filter(a => a.type === "link").length > 0;
     const alt = node.alt || undefined;
     if (alt) hasAltText = true;
     if (!alt && !imageIsLink) return;
@@ -22,12 +23,6 @@ function checkAltText(ast, file) {
     }
     textToNodes[alt].push(node);
   };
-
-  const visitorParents = (node, ancestors) => {
-    imageIsLink = ancestors.filter(a => a.type === "link").length > 0;
-  };
-
-  visitParents(ast, "image", visitorParents);
 
   visit(ast, "image", aggregate);
 
