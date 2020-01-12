@@ -26,6 +26,34 @@ test("End in period", assert => {
   });
 });
 
+test("Image is a link", assert => {
+  const lint = processMarkdown(dedent`
+      [![Puppies.](https://site.com/image.png)](https://website.org)
+    `);
+  return lint.then(vFile => {
+    assert.equal(vFile.messages.length, 1);
+    assert.equal(
+      vFile.messages[0].reason,
+      "Images inside a link tag require alt text that describes the purpose of the link."
+    );
+    assert.end();
+  });
+});
+
+test("Image is a link, should have alt text", assert => {
+  const lint = processMarkdown(dedent`
+      [![](https://site.com/image.png)](https://website.org)
+    `);
+  return lint.then(vFile => {
+    assert.equal(vFile.messages.length, 1);
+    assert.equal(
+      vFile.messages[0].reason,
+      "No alt text found: Images inside a link tag require alt text that describes the purpose of the link."
+    );
+    assert.end();
+  });
+});
+
 test("No warnings", assert => {
   const lint = processMarkdown(dedent`
       # Title of my site
