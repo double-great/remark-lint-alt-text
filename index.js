@@ -14,7 +14,7 @@ function checkAltText(ast, file) {
     if (!alt && !imageIsLink) return;
     if (!alt && imageIsLink) {
       file.message(
-        "An image link should have alt text to describe the link.",
+        "No alt text found: Images inside a link tag require alt text that describes the purpose of the link.",
         node
       );
     }

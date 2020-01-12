@@ -48,7 +48,7 @@ test("Image is a link, should have alt text", assert => {
     assert.equal(vFile.messages.length, 1);
     assert.equal(
       vFile.messages[0].reason,
-      "Not alt text found: Images inside a link tag require alt text that describes the purpose of the link."
+      "No alt text found: Images inside a link tag require alt text that describes the purpose of the link."
     );
     assert.end();
   });
