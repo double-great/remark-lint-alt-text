@@ -35,6 +35,7 @@
     "test": "tests"
   },
   "keywords": [
+    "accessibility",
     "remark",
     "remark-plugin",
     "remark-lint"
