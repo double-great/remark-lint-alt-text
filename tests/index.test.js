@@ -21,7 +21,10 @@ test("End in period", assert => {
     `);
   return lint.then(vFile => {
     assert.equal(vFile.messages.length, 1);
-    assert.equal(vFile.messages[0].reason, "Alt text should end in a period.");
+    assert.equal(
+      vFile.messages[0].reason,
+      "Alt text should end in a period (https://git.io/Jvqiq)."
+    );
     assert.end();
   });
 });
