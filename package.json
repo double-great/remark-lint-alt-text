@@ -1,7 +1,7 @@
 {
   "name": "@double-great/remark-lint-alt-text",
   "version": "0.1.0",
-  "description": "A remark-lint plugin to warn against inaccessible alt text.",
+  "description": "A remark-lint plugin that finds unhelpful or missing image alt text",
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --fix",
@@ -12,7 +12,7 @@
   "author": "@double-great",
   "license": "MIT",
   "dependencies": {
-    "@double-great/alt-text": "^0.1.0",
+    "@double-great/alt-text": "^0.2.0",
     "unified-lint-rule": "^1.0.4",
     "unist-util-visit-parents": "^3.0.1"
   },
@@ -24,7 +24,7 @@
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
     "remark": "^11.0.2",
-    "tape": "^4.12.1"
+    "tape": "^4.13.0"
   },
   "husky": {
     "hooks": {
