@@ -1,6 +1,6 @@
 # remark-lint-alt-text [![Build Status](https://travis-ci.com/double-great/remark-lint-alt-text.svg?branch=master)](https://travis-ci.com/double-great/remark-lint-alt-text)
 
-A [remark-lint](https://github.com/remarkjs/remark-lint) plugin to warn against inaccessible alt text.
+A [remark-lint](https://github.com/remarkjs/remark-lint) plugin that finds unhelpful or missing image alt text.
 
 ## Install
 
