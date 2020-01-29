@@ -1,6 +1,7 @@
 const rule = require("unified-lint-rule");
 const visit = require("unist-util-visit-parents");
 const altText = require("@double-great/alt-text");
+const altTextRules = require("@double-great/alt-text/rules");
 
 function checkAltText(ast, file) {
   const textToNodes = {};
@@ -13,10 +14,7 @@ function checkAltText(ast, file) {
     if (alt) hasAltText = true;
     if (!alt && !imageIsLink) return;
     if (!alt && imageIsLink) {
-      file.message(
-        "No alt text found: Images inside a link tag require alt text that describes the purpose of the link.",
-        node
-      );
+      file.message(altTextRules.createWarning("imageLink"), node);
     }
     if (!textToNodes[alt]) {
       textToNodes[alt] = [];
@@ -34,10 +32,7 @@ function checkAltText(ast, file) {
         file.message(altText(node.alt), node);
       }
       if (imageIsLink && hasAltText) {
-        file.message(
-          "Images inside a link tag require alt text that describes the purpose of the link.",
-          node
-        );
+        file.message(altTextRules.createWarning("imageLink"), node);
       }
     });
   });
