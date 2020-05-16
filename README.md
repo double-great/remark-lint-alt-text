@@ -2,6 +2,8 @@
 
 A [remark-lint](https://github.com/remarkjs/remark-lint) plugin that finds unhelpful or missing image alt text.
 
+It uses the rules definition from https://github.com/double-great/alt-text.
+
 ## Install
 
 ```sh
