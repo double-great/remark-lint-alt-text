@@ -1,4 +1,4 @@
-# remark-lint-alt-text [![Build Status](https://travis-ci.com/double-great/remark-lint-alt-text.svg?branch=master)](https://travis-ci.com/double-great/remark-lint-alt-text)
+# remark-lint-alt-text ![Build Status](https://github.com/double-great/remark-lint-alt-text/workflows/Test/badge.svg)
 
 A [remark-lint](https://github.com/remarkjs/remark-lint) plugin that finds unhelpful or missing image alt text.
 
