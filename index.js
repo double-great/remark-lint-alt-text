@@ -14,7 +14,7 @@ function checkAltText(ast, file) {
     if (alt) hasAltText = true;
     if (!alt && !imageIsLink) return;
     if (!alt && imageIsLink) {
-      file.message(altTextRules.createWarning("imageLink"), node);
+      file.message(altTextRules.createSuggestion("imageLink"), node);
     }
     if (!textToNodes[alt]) {
       textToNodes[alt] = [];
@@ -32,7 +32,7 @@ function checkAltText(ast, file) {
         file.message(altText(node.alt), node);
       }
       if (imageIsLink && hasAltText) {
-        file.message(altTextRules.createWarning("imageLink"), node);
+        file.message(altTextRules.createSuggestion("imageLink"), node);
       }
     });
   });

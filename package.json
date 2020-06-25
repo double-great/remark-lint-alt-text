@@ -12,7 +12,7 @@
   "author": "@double-great",
   "license": "MIT",
   "dependencies": {
-    "@double-great/alt-text": "^0.2.0",
+    "@double-great/alt-text": "^0.3.0",
     "unified-lint-rule": "^1.0.4",
     "unist-util-visit-parents": "^3.0.1"
   },
