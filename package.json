@@ -12,19 +12,19 @@
   "author": "@double-great",
   "license": "MIT",
   "dependencies": {
-    "@double-great/alt-text": "^0.3.0",
-    "unified-lint-rule": "^1.0.4",
-    "unist-util-visit-parents": "^3.0.1"
+    "@double-great/alt-text": "^0.4.0",
+    "unified-lint-rule": "^1.0.6",
+    "unist-util-visit-parents": "^3.0.2"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
+    "babel-eslint": "^10.1.0",
     "dedent": "^0.7.0",
-    "eslint": "^6.8.0",
-    "husky": "^3.1.0",
-    "prettier": "^1.19.1",
+    "eslint": "^7.4.0",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
-    "remark": "^11.0.2",
-    "tape": "^4.13.0"
+    "remark": "^12.0.0",
+    "tape": "^5.0.1"
   },
   "husky": {
     "hooks": {
