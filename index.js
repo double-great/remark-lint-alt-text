@@ -9,7 +9,7 @@ function checkAltText(ast, file) {
   let hasAltText = false;
 
   const aggregate = (node, ancestors) => {
-    imageIsLink = ancestors.filter(a => a.type === "link").length > 0;
+    imageIsLink = ancestors.filter((a) => a.type === "link").length > 0;
     const alt = node.alt || undefined;
     if (alt) hasAltText = true;
     if (!alt && !imageIsLink) return;
@@ -24,10 +24,10 @@ function checkAltText(ast, file) {
 
   visit(ast, "image", aggregate);
 
-  return Object.keys(textToNodes).map(alt => {
+  return Object.keys(textToNodes).map((alt) => {
     const nodes = textToNodes[alt];
     if (!nodes) return;
-    nodes.forEach(node => {
+    nodes.forEach((node) => {
       if (node.alt && altText(node.alt)) {
         file.message(altText(node.alt), node);
       }

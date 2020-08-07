@@ -1,4 +1,3 @@
-const test = require("tape");
 const remark = require("remark");
 const dedent = require("dedent");
 const plugin = require("../");
@@ -7,8 +6,8 @@ const processMarkdown = (markdown, opts) => {
   return remark().use(plugin, opts).process(markdown);
 };
 
-test("End in period", (assert) => {
-  const lint = processMarkdown(dedent`
+it("End in period", async () => {
+  const lint = await processMarkdown(dedent`
       # Title of my site
 
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -17,46 +16,28 @@ test("End in period", (assert) => {
 
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     `);
-  return lint.then((vFile) => {
-    assert.equal(vFile.messages.length, 1);
-    assert.equal(
-      vFile.messages[0].reason,
-      "Alt text should end with punctuation (https://git.io/JJk55)."
-    );
-    assert.end();
-  });
+  expect(lint.messages.length).toEqual(1);
+  expect(lint.messages[0].reason).toMatchSnapshot();
 });
 
-test("Image is a link", (assert) => {
-  const lint = processMarkdown(dedent`
+it("Image is a link", async () => {
+  const lint = await processMarkdown(dedent`
       [![Puppies.](https://site.com/image.png)](https://website.org)
     `);
-  return lint.then((vFile) => {
-    assert.equal(vFile.messages.length, 1);
-    assert.equal(
-      vFile.messages[0].reason,
-      "Images inside a link tag require alt text that describes the purpose of the link (https://git.io/JvfNj)."
-    );
-    assert.end();
-  });
+  expect(lint.messages.length).toEqual(1);
+  expect(lint.messages[0].reason).toMatchSnapshot();
 });
 
-test("Image is a link, should have alt text", (assert) => {
-  const lint = processMarkdown(dedent`
+it("Image is a link, should have alt text", async () => {
+  const lint = await processMarkdown(dedent`
       [![](https://site.com/image.png)](https://website.org)
     `);
-  return lint.then((vFile) => {
-    assert.equal(vFile.messages.length, 1);
-    assert.equal(
-      vFile.messages[0].reason,
-      "Images inside a link tag require alt text that describes the purpose of the link (https://git.io/JvfNj)."
-    );
-    assert.end();
-  });
+  expect(lint.messages.length).toEqual(1);
+  expect(lint.messages[0].reason).toMatchSnapshot();
 });
 
-test("No warnings", (assert) => {
-  const lint = processMarkdown(dedent`
+it("No warnings", async () => {
+  const lint = await processMarkdown(dedent`
       # Title of my site
 
 
@@ -67,8 +48,5 @@ test("No warnings", (assert) => {
       ![A child holding a photograph.](https://site.com/kiddo.png)
 
     `);
-  return lint.then((vFile) => {
-    assert.equal(vFile.messages.length, 0);
-    assert.end();
-  });
+  expect(lint.messages.length).toEqual(0);
 });

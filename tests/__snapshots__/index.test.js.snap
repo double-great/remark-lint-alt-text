@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`End in period 1`] = `"Alt text should end with punctuation (https://git.io/JJk55)."`;
+
+exports[`Image is a link 1`] = `"Images inside a link tag require alt text that describes the purpose of the link (https://git.io/JvfNj)."`;
+
+exports[`Image is a link, should have alt text 1`] = `"Images inside a link tag require alt text that describes the purpose of the link (https://git.io/JvfNj)."`;
