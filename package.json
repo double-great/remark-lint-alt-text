@@ -3,6 +3,7 @@
   "version": "0.7.0",
   "description": "A remark-lint plugin that finds unhelpful or missing image alt text",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "lint": "eslint . --fix",
     "pretest": "npm run lint",
@@ -13,19 +14,21 @@
   "author": "@double-great",
   "license": "MIT",
   "dependencies": {
-    "@double-great/alt-text": "^0.6.0",
-    "unified-lint-rule": "^1.0.6",
-    "unist-util-visit-parents": "^3.1.1"
+    "@double-great/alt-text": "^1.0.0",
+    "unified-lint-rule": "^2.1.1",
+    "unist-util-visit-parents": "^5.1.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
+    "@babel/eslint-parser": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
     "dedent": "^0.7.0",
-    "eslint": "^7.16.0",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.0",
     "jest": "^27.4.5",
     "prettier": "^2.5.1",
     "pretty-quick": "^3.1.3",
-    "remark": "^13.0.0"
+    "remark": "^14.0.2"
   },
   "directories": {
     "test": "tests"
@@ -43,5 +46,10 @@
   "bugs": {
     "url": "https://github.com/double-great/remark-lint-alt-text/issues"
   },
-  "homepage": "https://github.com/double-great/remark-lint-alt-text#readme"
+  "homepage": "https://github.com/double-great/remark-lint-alt-text#readme",
+  "jest": {
+    "transformIgnorePatterns": [
+      "!node_modules/"
+    ]
+  }
 }

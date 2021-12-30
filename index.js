@@ -1,9 +1,10 @@
-const rule = require("unified-lint-rule");
-const visit = require("unist-util-visit-parents");
-const altText = require("@double-great/alt-text");
-const altTextRules = require("@double-great/alt-text/rules");
+import { lintRule } from "unified-lint-rule";
+import { visitParents } from "unist-util-visit-parents";
 
-function checkAltText(ast, file) {
+import altText from "@double-great/alt-text";
+import { createSuggestion } from "@double-great/alt-text/rules";
+
+const checkAltText = lintRule("remark-lint:alt-text", (ast, file) => {
   const textToNodes = {};
   let imageIsLink = false;
   let hasAltText = false;
@@ -14,7 +15,7 @@ function checkAltText(ast, file) {
     if (alt) hasAltText = true;
     if (!alt && !imageIsLink) return;
     if (!alt && imageIsLink) {
-      file.message(altTextRules.createSuggestion("imageLink"), node);
+      file.message(createSuggestion("imageLink"), node);
     }
     if (!textToNodes[alt]) {
       textToNodes[alt] = [];
@@ -22,7 +23,7 @@ function checkAltText(ast, file) {
     textToNodes[alt].push(node);
   };
 
-  visit(ast, "image", aggregate);
+  visitParents(ast, "image", aggregate);
 
   return Object.keys(textToNodes).map((alt) => {
     const nodes = textToNodes[alt];
@@ -32,10 +33,10 @@ function checkAltText(ast, file) {
         file.message(altText(node.alt), node);
       }
       if (imageIsLink && hasAltText) {
-        file.message(altTextRules.createSuggestion("imageLink"), node);
+        file.message(createSuggestion("imageLink"), node);
       }
     });
   });
-}
+});
 
-module.exports = rule("remark-lint:alt-text", checkAltText);
+export default checkAltText;
