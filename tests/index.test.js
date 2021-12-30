@@ -1,6 +1,6 @@
-const remark = require("remark");
-const dedent = require("dedent");
-const plugin = require("../");
+import { remark } from "remark";
+import dedent from "dedent";
+import plugin from "../";
 
 const processMarkdown = (markdown, opts) => {
   return remark().use(plugin, opts).process(markdown);
