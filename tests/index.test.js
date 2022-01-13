@@ -18,7 +18,7 @@ it("End in period", async () => {
     `);
   expect(lint.messages.length).toEqual(1);
   expect(lint.messages[0].reason).toMatchInlineSnapshot(
-    `"Alt text should end with punctuation (https://git.io/JJk55)."`
+    `"Alt text should end with punctuation (https://tinyurl.com/y5krn3ny)."`
   );
 });
 
@@ -28,7 +28,7 @@ it("Image is a link", async () => {
     `);
   expect(lint.messages.length).toEqual(1);
   expect(lint.messages[0].reason).toMatchInlineSnapshot(
-    `"Images inside a link tag require alt text that describes the purpose of the link (https://git.io/JvfNj)."`
+    `"Images inside a link tag require alt text that describes the purpose of the link (https://tinyurl.com/yxhq2k5w)."`
   );
 });
 
@@ -38,7 +38,7 @@ it("Image is a link, should have alt text", async () => {
     `);
   expect(lint.messages.length).toEqual(1);
   expect(lint.messages[0].reason).toMatchInlineSnapshot(
-    `"Images inside a link tag require alt text that describes the purpose of the link (https://git.io/JvfNj)."`
+    `"Images inside a link tag require alt text that describes the purpose of the link (https://tinyurl.com/yxhq2k5w)."`
   );
 });
 
