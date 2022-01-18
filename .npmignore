@@ -2,3 +2,6 @@ tests
 .eslintrc
 .github
 .husky
+babel.config.cjs
+tsconfig.json
+index.ts

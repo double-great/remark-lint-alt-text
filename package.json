@@ -2,33 +2,38 @@
   "name": "@double-great/remark-lint-alt-text",
   "version": "0.7.0",
   "description": "A remark-lint plugin that finds unhelpful or missing image alt text",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
     "lint": "eslint . --fix",
     "pretest": "npm run lint",
     "test": "jest",
     "pretty-quick": "pretty-quick",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepublish": "tsc"
   },
   "author": "@double-great",
   "license": "MIT",
   "dependencies": {
-    "@double-great/alt-text": "^1.0.0",
+    "@double-great/alt-text": "^2.0.0",
     "unified-lint-rule": "^2.1.1",
     "unist-util-visit-parents": "^5.1.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.5",
-    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-env": "^7.16.8",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/node": "^17.0.8",
     "dedent": "^0.7.0",
-    "eslint": "^8.5.0",
+    "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.0",
-    "jest": "^27.4.5",
+    "jest": "^27.4.7",
     "prettier": "^2.5.1",
     "pretty-quick": "^3.1.3",
-    "remark": "^14.0.2"
+    "remark": "^14.0.2",
+    "typescript": "^4.5.4"
   },
   "directories": {
     "test": "tests"
