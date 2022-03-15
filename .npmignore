@@ -1,5 +1,5 @@
 tests
-.eslintrc
+.eslintrc.cjs
 .github
 .husky
 babel.config.cjs
