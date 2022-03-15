@@ -56,7 +56,7 @@ const checkAltText = lintRule(
       for (const node of nodes) {
         const suggestion = altText(node.alt, options);
         if (suggestion) file.message(suggestion, node);
-        if (imageIsLink && hasAltText && options["image-is-link"] !== false) {
+        if (imageIsLink && !hasAltText && options["image-is-link"] !== false) {
           file.message(imageLink.check(), node);
         }
       }

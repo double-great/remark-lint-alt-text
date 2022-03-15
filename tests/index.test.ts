@@ -23,7 +23,7 @@ it("End in period", async () => {
   );
 });
 
-it("End in period, diesabled", async () => {
+it("End in period, disabled", async () => {
   const lint = await processMarkdown(
     dedent`
       # Title of my site
@@ -39,23 +39,10 @@ it("End in period, diesabled", async () => {
   expect(lint.messages.length).toEqual(0);
 });
 
-it("Image is a link", async () => {
+it("Image is a link, has alt text", async () => {
   const lint = await processMarkdown(dedent`
       [![Puppies.](https://site.com/image.png)](https://website.org)
     `);
-  expect(lint.messages.length).toEqual(1);
-  expect(lint.messages[0].reason).toMatchInlineSnapshot(
-    `"Images inside a link tag require alt text that describes the purpose of the link (https://tinyurl.com/yxhq2k5w)."`
-  );
-});
-
-it("Image is a link, disabled", async () => {
-  const lint = await processMarkdown(
-    dedent`
-      [![Puppies.](https://site.com/image.png)](https://website.org)
-    `,
-    { "image-is-link": false }
-  );
   expect(lint.messages.length).toEqual(0);
 });
 
@@ -67,6 +54,16 @@ it("Image is a link, should have alt text", async () => {
   expect(lint.messages[0].reason).toMatchInlineSnapshot(
     `"Images inside a link tag require alt text that describes the purpose of the link (https://tinyurl.com/yxhq2k5w)."`
   );
+});
+
+it("Image is a link, disabled", async () => {
+  const lint = await processMarkdown(
+    dedent`
+      [![](https://site.com/image.png)](https://website.org)
+    `,
+    { "image-is-link": false }
+  );
+  expect(lint.messages.length).toEqual(0);
 });
 
 it("No warnings", async () => {
