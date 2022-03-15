@@ -83,3 +83,31 @@ it("No warnings", async () => {
     `);
   expect(lint.messages.length).toEqual(0);
 });
+
+it("Empty alt text", async () => {
+  const lint = await processMarkdown(dedent`
+      # Title of my site
+
+
+      ![](https://site.com/doggie.png)
+
+    `);
+  expect(lint.messages.length).toEqual(1);
+  expect(lint.messages[0].reason).toMatchInlineSnapshot(
+    `"Empty alt text should only be used for decorative images (https://tinyurl.com/yxnvejgv)."`
+  );
+});
+
+it("Empty alt text, disabled", async () => {
+  const lint = await processMarkdown(
+    dedent`
+      # Title of my site
+
+
+      ![](https://site.com/doggie.png)
+
+    `,
+    { "image-is-decorative": false }
+  );
+  expect(lint.messages.length).toEqual(0);
+});

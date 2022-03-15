@@ -27,13 +27,11 @@ const checkAltText = lintRule(
       imageIsLink = ancestors.filter((a) => a.type === "link").length > 0;
       const { alt } = node;
       if (alt) hasAltText = true;
-      if (!alt && !imageIsLink) return;
-      if (
-        !alt &&
-        imageIsLink &&
-        options &&
-        options["image-is-link"] !== false
-      ) {
+      if (!alt && !imageIsLink) {
+        const suggestion = altText(undefined, options);
+        if (suggestion) file.message(suggestion, node);
+      }
+      if (!alt && imageIsLink && options["image-is-link"] !== false) {
         file.message(imageLink.check(), node);
       }
       if (!alt) return;
@@ -48,20 +46,13 @@ const checkAltText = lintRule(
     Object.keys(textToNodes).map((alt) => {
       const nodes = textToNodes[alt];
       if (!nodes) return;
-      nodes.forEach((node) => {
-        if (hasAltText) {
-          const suggestion = altText(node.alt, options);
-          if (suggestion) file.message(suggestion, node);
-        }
-        if (
-          imageIsLink &&
-          hasAltText &&
-          options &&
-          options["image-is-link"] !== false
-        ) {
+      for (const node of nodes) {
+        const suggestion = altText(node.alt, options);
+        if (suggestion) file.message(suggestion, node);
+        if (imageIsLink && hasAltText && options["image-is-link"] !== false) {
           file.message(imageLink.check(), node);
         }
-      });
+      }
     });
   }
 );
