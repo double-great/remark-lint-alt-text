@@ -11,7 +11,7 @@
     "test": "jest",
     "pretty-quick": "pretty-quick",
     "prepare": "husky install",
-    "prepublish": "tsc"
+    "prepublishOnly": "tsc"
   },
   "author": "@double-great",
   "license": "MIT",
