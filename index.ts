@@ -1,7 +1,7 @@
 import { lintRule } from "unified-lint-rule";
 import { visitParents } from "unist-util-visit-parents";
-import altText from "@double-great/alt-text";
-import { createSuggestion } from "@double-great/alt-text/dist/rules";
+import altText, { Config, defaultConfig } from "@double-great/alt-text";
+import imageLink from "@double-great/alt-text/dist/clues/image-link.js";
 import { VFile, Node } from "unified-lint-rule/lib";
 
 type textNode = {
@@ -14,7 +14,11 @@ type textNode = {
 
 const checkAltText = lintRule(
   "remark-lint:alt-text",
-  (tree: Node, file: VFile): void => {
+  (tree: Node, file: VFile, options: Config): void => {
+    options = {
+      defaultConfig,
+      ...options,
+    };
     const textToNodes: { [alt: string]: textNode[] } = {};
     let imageIsLink = false;
     let hasAltText = false;
@@ -24,8 +28,13 @@ const checkAltText = lintRule(
       const { alt } = node;
       if (alt) hasAltText = true;
       if (!alt && !imageIsLink) return;
-      if (!alt && imageIsLink) {
-        file.message(createSuggestion("imageLink"), node);
+      if (
+        !alt &&
+        imageIsLink &&
+        options &&
+        options["image-is-link"] !== false
+      ) {
+        file.message(imageLink.check(), node);
       }
       if (!alt) return;
       if (!textToNodes[alt]) {
@@ -41,11 +50,16 @@ const checkAltText = lintRule(
       if (!nodes) return;
       nodes.forEach((node) => {
         if (hasAltText) {
-          const suggestion = altText(node.alt);
+          const suggestion = altText(node.alt, options);
           if (suggestion) file.message(suggestion, node);
         }
-        if (imageIsLink && hasAltText) {
-          file.message(createSuggestion("imageLink"), node);
+        if (
+          imageIsLink &&
+          hasAltText &&
+          options &&
+          options["image-is-link"] !== false
+        ) {
+          file.message(imageLink.check(), node);
         }
       });
     });

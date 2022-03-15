@@ -16,7 +16,7 @@
   "author": "@double-great",
   "license": "MIT",
   "dependencies": {
-    "@double-great/alt-text": "^2.0.0",
+    "@double-great/alt-text": "^3.0.0",
     "unified-lint-rule": "^2.1.1",
     "unist-util-visit-parents": "^5.1.0"
   },
@@ -58,6 +58,9 @@
   "jest": {
     "transformIgnorePatterns": [
       "!node_modules/"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^../index.js$": "<rootDir>/index.ts"
+    }
   }
 }
