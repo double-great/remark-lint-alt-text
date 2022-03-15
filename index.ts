@@ -16,7 +16,7 @@ const checkAltText = lintRule(
   "remark-lint:alt-text",
   (tree: Node, file: VFile, options: Config): void => {
     options = {
-      defaultConfig,
+      ...defaultConfig,
       ...options,
     };
     const textToNodes: { [alt: string]: textNode[] } = {};
