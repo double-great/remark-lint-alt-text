@@ -21,7 +21,6 @@
     "unist-util-visit-parents": "^5.1.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.16.5",
     "@babel/preset-env": "^7.16.8",
     "@babel/preset-typescript": "^7.16.7",
     "@types/dedent": "^0.7.0",
