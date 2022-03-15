@@ -19,3 +19,13 @@ Add the remark-lint-alt-text plugin to your remark configuration:
   ]
 },
 ```
+
+You can also customize suggestions:
+
+```json
+"remarkConfig": {
+  "plugins": [
+    ["@double-great/remark-lint-alt-text", [1, { "empty-alt-text": false }]],
+  ]
+},
+```
