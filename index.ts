@@ -43,7 +43,7 @@ const checkAltText = lintRule(
 
     visitParents(tree, "image", aggregate);
 
-    Object.keys(textToNodes).map((alt) => {
+    for (const alt of Object.keys(textToNodes)) {
       const nodes = textToNodes[alt];
       if (!nodes) return;
       for (const node of nodes) {
@@ -53,7 +53,7 @@ const checkAltText = lintRule(
           file.message(imageLink.check(), node);
         }
       }
-    });
+    }
   }
 );
 
