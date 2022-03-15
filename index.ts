@@ -15,7 +15,7 @@ type textNode = {
 const checkAltText = lintRule(
   "remark-lint:alt-text",
   (tree: Node, file: VFile): void => {
-    let textToNodes: { [alt: string]: textNode[] } = {};
+    const textToNodes: { [alt: string]: textNode[] } = {};
     let imageIsLink = false;
     let hasAltText = false;
 
