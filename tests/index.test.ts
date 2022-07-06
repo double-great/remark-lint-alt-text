@@ -37,7 +37,7 @@ describe("End in period", () => {
     `);
     expect(lint.messages.length).toEqual(1);
     expect(lint.messages[0].reason).toMatchInlineSnapshot(
-      `"Alt text should end with punctuation (https://tinyurl.com/y5krn3ny)."`
+      `"Alt text should end with punctuation (https://tinyurl.com/y9fcquhy)."`
     );
   });
 
@@ -72,7 +72,7 @@ describe("Image is a link", () => {
     `);
     expect(lint.messages.length).toEqual(1);
     expect(lint.messages[0].reason).toMatchInlineSnapshot(
-      `"Images inside a link tag require alt text that describes the purpose of the link (https://tinyurl.com/yxhq2k5w)."`
+      `"Images inside a link tag require alt text that describes the purpose of the link (https://tinyurl.com/y7s7je5u)."`
     );
   });
 
@@ -98,7 +98,7 @@ describe("Empty alt text", () => {
     `);
     expect(lint.messages.length).toEqual(1);
     expect(lint.messages[0].reason).toMatchInlineSnapshot(
-      `"Empty alt text should only be used for decorative images (https://tinyurl.com/yxnvejgv)."`
+      `"Empty alt text should only be used for decorative images (https://tinyurl.com/y8mlwswv)."`
     );
   });
 
