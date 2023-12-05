@@ -61,7 +61,7 @@ const checkAltText = lintRule(
         }
       }
     }
-  }
+  },
 );
 
 export default checkAltText;
