@@ -13,7 +13,8 @@
     "pretest": "npm run lint",
     "test": "jest",
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "format": "prettier --write ."
   },
   "author": "@double-great",
   "license": "MIT",

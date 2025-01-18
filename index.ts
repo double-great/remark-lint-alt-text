@@ -32,11 +32,11 @@ const checkAltText = lintRule(
 
       if (!alt && !imageIsLink) {
         const suggestion = altText(undefined, options);
-        if (suggestion) file.message(suggestion, node);
+        if (suggestion) file.message(suggestion);
       }
 
       if (!alt && imageIsLink && options["image-is-link"] !== false) {
-        file.message(imageLink.check(), node);
+        file.message(imageLink.check());
       }
 
       if (!alt) return;
@@ -55,9 +55,9 @@ const checkAltText = lintRule(
 
       for (const node of nodes) {
         const suggestion = altText(node.alt, options);
-        if (suggestion) file.message(suggestion, node);
+        if (suggestion) file.message(suggestion);
         if (imageIsLink && !hasAltText && options["image-is-link"] !== false) {
-          file.message(imageLink.check(), node);
+          file.message(imageLink.check());
         }
       }
     }
