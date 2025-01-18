@@ -11,6 +11,5 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true
   },
-  "include": ["**/*.ts"],
-  "exclude": ["jest.config.ts", "tests/**/*.ts"]
+  "include": ["index.ts"]
 }
