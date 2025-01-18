@@ -2,38 +2,44 @@
   "name": "@double-great/remark-lint-alt-text",
   "version": "1.0.0",
   "description": "A remark-lint plugin that finds unhelpful or missing image alt text",
-  "main": "dist/index.js",
+  "exports": "./dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "jest",
-    "prepublishOnly": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "format": "prettier --write ."
   },
   "author": "@double-great",
   "license": "MIT",
   "dependencies": {
-    "@double-great/alt-text": "^3.1.0",
-    "unified-lint-rule": "^2.1.2",
+    "@double-great/alt-text": "^3.2.1",
+    "unified-lint-rule": "^3.0.0",
     "unist-util-visit-parents": "^6.0.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.24.6",
-    "@babel/preset-typescript": "^7.24.6",
-    "@eslint/js": "^9.3.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@eslint/js": "^9.18.0",
     "@types/dedent": "^0.7.2",
-    "@types/eslint__js": "^8.42.3",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.12.12",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.7",
     "dedent": "^1.5.3",
-    "eslint": "^8.57.0",
-    "eslint-plugin-jest": "^28.5.0",
+    "eslint": "^9.18.0",
+    "eslint-plugin-jest": "^28.11.0",
     "jest": "^29.7.0",
-    "prettier": "^3.2.5",
+    "prettier": "^3.4.2",
+    "prettier-2": "npm:prettier@^2",
     "remark": "^15.0.1",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.11.0"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
   },
   "directories": {
     "test": "tests"
@@ -51,13 +57,5 @@
   "bugs": {
     "url": "https://github.com/double-great/remark-lint-alt-text/issues"
   },
-  "homepage": "https://github.com/double-great/remark-lint-alt-text#readme",
-  "jest": {
-    "transformIgnorePatterns": [
-      "!node_modules/"
-    ],
-    "moduleNameMapper": {
-      "^../index.js$": "<rootDir>/index.ts"
-    }
-  }
+  "homepage": "https://github.com/double-great/remark-lint-alt-text#readme"
 }
