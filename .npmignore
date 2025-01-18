@@ -6,4 +6,4 @@ tsconfig.json
 index.ts
 .prettierrc
 .vscode
-jest.config.ts
+jest.config.js
