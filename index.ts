@@ -1,8 +1,13 @@
-import { lintRule } from "unified-lint-rule";
+import { lintRule, Severity, Label } from "unified-lint-rule";
 import { visitParents } from "unist-util-visit-parents";
-import altText, { Config, defaultConfig } from "@double-great/alt-text";
-import imageLink from "@double-great/alt-text/dist/clues/image-link.js";
-import { VFile, Node } from "unified-lint-rule/lib";
+import altText, {
+  Config,
+  defaultConfig,
+  imageLink,
+} from "@double-great/alt-text";
+import { Node } from "unist";
+import { VFile } from "vfile";
+import { TransformCallback } from "unified";
 
 type textNode = {
   type: string;
@@ -12,7 +17,18 @@ type textNode = {
   position: string[];
 };
 
-const checkAltText = lintRule(
+type Plugin = (
+  config?:
+    | Label
+    | Severity
+    | Config
+    | [level: Label | Severity, option?: Config | undefined]
+    | undefined,
+) =>
+  | ((tree: Node, file: VFile, next: TransformCallback) => undefined)
+  | undefined;
+
+const checkAltText: Plugin = lintRule(
   "remark-lint:alt-text",
   (tree: Node, file: VFile, options: Config): void => {
     options = {

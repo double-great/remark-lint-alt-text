@@ -19,7 +19,7 @@
   "author": "@double-great",
   "license": "MIT",
   "dependencies": {
-    "@double-great/alt-text": "^3.2.0",
+    "@double-great/alt-text": "^3.2.1",
     "unified-lint-rule": "^3.0.0",
     "unist-util-visit-parents": "^6.0.1"
   },
