@@ -1,7 +1,9 @@
 tests
-.eslintrc.cjs
+eslint.config.js
 .github
-.husky
-babel.config.cjs
+babel.config.json
 tsconfig.json
 index.ts
+.prettierrc
+.vscode
+jest.config.ts
