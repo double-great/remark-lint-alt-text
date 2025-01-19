@@ -1,6 +1,6 @@
 {
   "name": "@double-great/remark-lint-alt-text",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A remark-lint plugin that finds unhelpful or missing image alt text",
   "exports": "./dist/index.js",
   "types": "dist/index.d.ts",
