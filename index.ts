@@ -7,7 +7,6 @@ import altText, {
 } from "@double-great/alt-text";
 import { Node } from "unist";
 import { VFile } from "vfile";
-import { VFileMessage } from "vfile-message";
 import { TransformCallback } from "unified";
 
 type Plugin = (
@@ -44,12 +43,11 @@ const checkAltText: Plugin = lintRule(
 
       if (!alt && !imageIsLink) {
         const suggestion = altText(undefined, options);
-        if (suggestion)
-          file.message(new VFileMessage(suggestion), node.position);
+        if (suggestion) file.message(suggestion, node.position);
       }
 
       if (!alt && imageIsLink && options["image-is-link"] !== false) {
-        file.message(new VFileMessage(imageLink.check()), node.position);
+        file.message(imageLink.check(), node.position);
       }
 
       if (!alt) return;
@@ -68,10 +66,9 @@ const checkAltText: Plugin = lintRule(
 
       for (const node of nodes) {
         const suggestion = altText(node.alt, options);
-        if (suggestion)
-          file.message(new VFileMessage(suggestion), node.position);
+        if (suggestion) file.message(suggestion, node.position);
         if (imageIsLink && !hasAltText && options["image-is-link"] !== false) {
-          file.message(new VFileMessage(imageLink.check()), node.position);
+          file.message(imageLink.check(), node.position);
         }
       }
     }
