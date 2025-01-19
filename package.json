@@ -21,7 +21,9 @@
   "dependencies": {
     "@double-great/alt-text": "^3.2.1",
     "unified-lint-rule": "^3.0.0",
-    "unist-util-visit-parents": "^6.0.1"
+    "unist-util-visit-parents": "^6.0.1",
+    "vfile": "^6.0.3",
+    "vfile-message": "^4.0.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.26.0",
